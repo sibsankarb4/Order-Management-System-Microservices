@@ -1,0 +1,27 @@
+server:
+  port: 8092
+spring:
+  boot:
+    admin:
+      client:
+        url: http://localhost:8091
+        username: admin
+        password: admin
+  application:
+    name: eureka-server
+management:
+  security:
+    enabled: false 
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    health:
+      show-details: always
+security:
+  basic:
+    enabled:false
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
