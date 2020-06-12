@@ -1,5 +1,7 @@
 start cmd.exe /c Kafka_Delete_Logs.bat
 
+echo off
+mode 800
 color 57
 type banner.txt
 timeout 10
