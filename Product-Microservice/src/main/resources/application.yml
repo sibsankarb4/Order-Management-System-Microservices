@@ -1,0 +1,45 @@
+server:
+  port: 8097
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    health:
+      show-details: always
+  security:
+    enabled: false 
+security:
+  basic:
+    enabled: false
+spring:
+  boot:
+    admin:
+      client:
+        url: http://localhost:8091
+        username: admin
+        password: admin
+  application:
+    name: product-microservice
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: product_dev
+kafka:
+  bootstrapAddress: localhost:9092,localhost:9093,localhost:9094
+  acks: all
+  retries: 5
+  retry:
+    backoff:
+      ms: 1000
+  message:
+    exchangeTopic:
+      name: exchange-events
+    productTopic:
+      name: product_count_topic
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8092/eureka

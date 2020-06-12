@@ -1,0 +1,45 @@
+server:
+  port: 8093
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    health:
+      show-details: always
+  security:
+    enabled: false 
+security:
+  basic:
+    enabled: false
+spring:
+  boot:
+    admin:
+      client:
+        url: http://localhost:8091
+        username: admin
+        password: admin
+  application:
+    name: api-gateway-server
+#  main:
+#    web-application-type: reactive
+
+zuul:
+  sensitiveHeaders:
+  ignored-headers: Access-Control-Allow-Credentials, Access-Control-Allow-Origin
+  routes:
+    customer-microservice:
+      path: /customer-microservice/**
+      url: http://localhost:8094/
+    order-microservice:
+      path: /order-microservice/**
+      url: http://localhost:8095/
+    product-microservice:
+      path: /product-microservice/**
+      url: http://localhost:8097/
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8092/eureka
+    
+
